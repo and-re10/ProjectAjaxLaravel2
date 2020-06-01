@@ -22,7 +22,8 @@
                         </div>
 
                         {{-- Formulaire pour creer un nouveau utilisateur --}}
-                        <div class="modal-body">
+                        <form id="addUsers">
+                            <div class="modal-body">
                             {{-- Nom de l'utilisateur --}}
                             <div class="form-group">
                               <label for="">Nom</label>
@@ -34,12 +35,16 @@
                                 <label for="">Email</label>
                                 <input type="text" name="email" id="" class="form-control" placeholder="" aria-describedby="helpId">
                               </div>
-                        </div>
+                            </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
-                        </div>
+                            <div class="modal-footer">
+                                {{-- Boutton pour fermer le modal --}}
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                {{-- Bouton pour add un nouveau utilisateur --}}
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
