@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+// Modal Add Utilisateurs
+Route::get('/users', 'UsersController@index');
+
+Route::post('/usersadd', 'UsersController@store');
+
