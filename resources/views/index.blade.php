@@ -4,11 +4,12 @@
     <div class="container">
         <h1 class="text-center mt-5">Exercice Ajax Laravel</h1>
 
+        <button type="button" class="btn btn-primary" id="test">Boutton Test</button>
         <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userAddModal">
                 Add Users
             </button>
-            
+
             <!-- Modal Add Users -->
             <div class="modal fade" id="userAddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -23,6 +24,7 @@
 
                         {{-- Formulaire pour creer un nouveau utilisateur --}}
                         <form id="addUsers">
+                            @csrf
                             <div class="modal-body">
                             {{-- Nom de l'utilisateur --}}
                             <div class="form-group">
@@ -49,7 +51,38 @@
                 </div>
             </div>
         </div>
-    
-    
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $('#test').click(function(){
+                    alert('Hello World, Premier Test!')
+                })
+                
+                // $('#addUsers').submit(function (e) {
+                //     e.preventDefault();
+                //     // requettes via ajax sans chargament de page
+                //     $.ajax({
+                //         // Type de methode 
+                //         type: 'POST',
+                //         // Route du controller
+                //         url: 'usersadd',
+                //         // Verification du data dans le formulaire
+                //         date: $('#addUsers').serialize(),
+                //         // En cas de Success
+                //         success: function(response) {
+                //             console.log(response);
+                //             $('#userAddModal').modal('hide');
+                //             alert('Data Saved');
+                //         },
+                //         error: function(error) {
+                //             alert("Data Not Saved");
+                //         },
+                //     })
+                // })
+            })
+        </script>
+
+
 
 @endsection
