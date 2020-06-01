@@ -12,8 +12,11 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
+
     </head>
     <body>
-        <h1 class="text-center mt-5">Exercice Ajax Laravel</h1>
+
+        @yield('content')
+        
     </body>
 </html>
