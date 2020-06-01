@@ -26,17 +26,23 @@
                         <form id="addUsers">
                             @csrf
                             <div class="modal-body">
-                            {{-- Nom de l'utilisateur --}}
-                            <div class="form-group">
-                              <label for="">Nom</label>
-                              <input type="text" name="nom" id="" class="form-control" placeholder="" aria-describedby="helpId">
-                            </div>
+                                {{-- Nom de l'utilisateur --}}
+                                <div class="form-group">
+                                <label for="">Nom</label>
+                                <input type="text" name="nom" id="" class="form-control @error('nom') is-invalid @enderror" placeholder="" aria-describedby="helpId">
+                                @error('nom')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
 
-                            {{-- Email de l'utilisateur --}}
-                            <div class="form-group">
-                                <label for="">Email</label>
-                                <input type="text" name="email" id="" class="form-control" placeholder="" aria-describedby="helpId">
-                              </div>
+                                {{-- Email de l'utilisateur --}}
+                                <div class="form-group">
+                                    <label for="">Email</label>
+                                    <input type="text" name="email" id="" class="form-control @error('email') is-invalid @enderror" placeholder="" aria-describedby="helpId">
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="modal-footer">
@@ -58,29 +64,35 @@
                 $('#test').click(function(){
                     alert('Hello World, Premier Test!')
                 })
-                
-                // $('#addUsers').submit(function (e) {
-                //     e.preventDefault();
-                //     // requettes via ajax sans chargament de page
-                //     $.ajax({
-                //         // Type de methode 
-                //         type: 'POST',
-                //         // Route du controller
-                //         url: 'usersadd',
-                //         // Verification du data dans le formulaire
-                //         date: $('#addUsers').serialize(),
-                //         // En cas de Success
-                //         success: function(response) {
-                //             console.log(response);
-                //             $('#userAddModal').modal('hide');
-                //             alert('Data Saved');
-                //         },
-                //         error: function(error) {
-                //             alert("Data Not Saved");
-                //         },
-                //     })
-                // })
-            })
+                 
+                $('#addUsers').submit(function(e) {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    e.preventDefault();
+
+                    // requettes via ajax sans chargament de page
+                    $.ajax({
+                        // Type de methode 
+                        type: "POST",
+                        // Route du controller
+                        url: "usersadd",
+                        // Verification du data dans le formulaire
+                        data: $('#addUsers').serialize(),
+                        // En cas de Success
+                        success: function(response) {
+                            console.log(response);
+                            $("#userAddModal").modal('hide');
+                            alert('Data Saved');
+                        },
+                        error: function(error) {
+                            alert("Data Not Saved");
+                        }
+                    });
+                });
+            });
         </script>
 
 
