@@ -18,7 +18,9 @@ Route::get('/', function () {
 });
 
 // Modal Add Utilisateurs
-Route::get('/users', 'UsersController@index');
+// Route::get('/users', 'UsersController@index');
 
-Route::post('/usersadd', 'UsersController@store');
+// Route::post('/usersadd', 'UsersController@store');
+
+Route::resource('/users', 'UsersController');
 
