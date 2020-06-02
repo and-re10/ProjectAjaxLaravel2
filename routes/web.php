@@ -24,3 +24,7 @@ Route::get('/', function () {
 
 Route::resource('/users', 'UsersController');
 
+// Modal Add Film
+
+Route::resource('/films', 'FilmsController');
+
