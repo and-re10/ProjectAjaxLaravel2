@@ -133,7 +133,7 @@
                     type: "POST",
                     // Route du controller
                     url: "{{route('users.store')}}",
-                    // Verification du data dans le formulaire
+                    // Verification des donnees dans le formulaire
                     data: $('#addUsers').serialize(),
                     // En cas de Success
                     success: function(response) {
@@ -146,6 +146,34 @@
                     }
                 });
             });
+
+            $('#addFilms').submit(function(e){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                e.preventDefault();
+
+                $.ajax({
+                    // Type de Methode
+                    type: "POST",
+                    // Route du Controller
+                    url: "{{route('films.store')}}",
+                    // Verification des donnees dans la formulaire
+                    data: $('#addFilms').serialize(),
+                    success: function(response){
+                        console.log(response);
+                        $('#addFilms').trigger("reset");
+                        $('#filmAddModal').modal('hide');
+                        alert('Les Données ont été enregistrées');
+                    },
+                    error: function(error){
+                        console.log(error);
+                        alert("Les Données n'ont pas été enregintrées")
+                    }
+                })
+            })
         });
     </script>
 
